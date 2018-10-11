@@ -1,0 +1,50 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+
+<h2>{{ title }}</h2>
+<button class="btn btn-primary" onClick="choose('Station 71')">Station 71</button>
+<button class="btn btn-primary" onClick="choose('Station 70')">Station 70</button>
+<button class="btn btn-primary" onClick="choose('LRV Test 1')">LRV Test 1</button>
+<button class="btn btn-primary" onClick="choose('LRV Test 2')">LRV Test 2</button>
+<button class="btn btn-primary" onClick="choose('Short Pit')">Short Pit</button>
+<button class="btn btn-primary" onClick="choose('Long Pits')">Long Pits</button>
+<button class="btn btn-primary" onClick="choose('None')">Test</button>
+<p></p>
+<button class="btn btn-info" onclick="openFullscreen();">Fullscreen</button>
+<p></p>
+<div>
+<iframe id="frame1"></iframe>
+</div>
+
+<script>
+/* Get the element you want displayed in fullscreen mode (a video in this example): */
+var elem = document.getElementById("frame1"); 
+var stn
+var flag1
+/* When the openFullscreen() function is executed, open the video in fullscreen.
+Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+    }
+function choose(choice){
+    stn = choice;
+    flag1 = choice;
+}
+function refresh()
+  {
+    document.all.frame1.src = "watch/?stn=" + stn + "&flag1=" + flag1;
+  }
+window.setInterval("refresh()", 500);
+</script>
+
+{% endblock %}

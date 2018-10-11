@@ -1,0 +1,32 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+ <a href="admin/app/userlist/add/" class="btn btn-default" style="background-color:palegreen;">Add User</a>
+<p><br /></p>
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">User Since</th>
+    <th scope="col">Name</th>
+    <th scope="col">RFID Number</th>
+    <th scope="col">Access Type</th>
+    <th scope="col">Photo</th>
+  </tr>
+  </thead>
+  <tbody>
+   {% for user in user_list %}
+        <tr>
+            <td>{{ user.entrydate }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.scan_id }}</td>
+            <td>{{ user.access }}</td>
+            <td> <img src="{{ user.image.url }}"style="width:128px;height:128px;"> </td>
+            <td style="vertical-align:middle;"><a href="/admin/app/userlist/{{ user.scan_id }}/change/" class="btn btn-warning">Edit</a></tdstyle="vertical-align:middle;">
+        </tr>
+    {% endfor %}
+  </tbody>
+</table> 
+
+{% endblock %}

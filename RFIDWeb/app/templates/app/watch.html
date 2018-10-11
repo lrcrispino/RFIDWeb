@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }} - RFID Door Control</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+</head>
+<body style="padding:0;background-color:grey;height:100vh;overflow:hidden">
+<h1 style="text-align: center;padding:0;margin:0px;margin-top:1px;background-color:#292b2d;color:#d6d6d6; border-bottom:solid; border-bottom-color:black">{{ title }}</h1>
+
+<watch-body>      
+
+    <div class="watch-list">
+            {% for watch in watch_list %}
+            <div class="list-item">
+                <img class="watch-image" src="{{ watch.image.url }}">  
+                <p style="padding:0px;margin:0px;"><b>{{ watch.username }}</b></p>
+            </div>
+                {% if forloop.counter|divisibleby:"5" and not forloop.last %}
+                    </div>
+                    <div class="watch-list2">
+                {% endif %}
+            {% endfor %}
+   </div>
+</watch-body>
+</body>
+</html>
+

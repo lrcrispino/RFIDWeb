@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }} - RFID Door Control</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <meta http-equiv="refresh" content="9999">
+</head>
+<body style="padding:0">
+<h1 style="text-align: center;padding:0;margin:0px;margin-top:1px;background-color:lightsalmon;">{{ title }}</h1>
+    
+    <div class="wrapper">
+            {% for watch in watch_list %}
+            <div class="wrapper-item">
+                <img src="{{ watch.image.url }}">  
+                <p style="padding:0px;margin:0px;"><b>{{ watch.username }}</b></p>
+            </div>
+            {% endfor %}
+    </div>
+
+</body>
+</html>

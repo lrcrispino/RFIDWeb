@@ -1,0 +1,37 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+ <a href="admin/app/scanners/add/" class="btn btn-success">Add</a>
+<a href="/pingscanners" class="btn btn-info">Ping Scanners</a>
+<p><br /></p>
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Scanner ID</th>
+    <th scope="col">Area</th>
+    <th scope="col">Door</th>
+    <th scope="col">Direction</th>
+    <th scope="col">Door Latch?</th>
+    <th scope="col">Description</th>
+    <th scope="col">Online?</th>
+  </tr>
+  </thead>
+  <tbody>
+   {% for scanner in scanner_list %}
+        <tr>
+            <td>{{ scanner.clientid }}</td>
+            <td>{{ scanner.area }}</td>
+            <td>{{ scanner.door }}</td>
+            <td>{{ scanner.direction }}</td>
+            <td>{{ scanner.latch }}</td>
+            <td>{{ scanner.description }}</td>
+            <td>{{ scanner.online }}</td>
+            <td style="vertical-align:middle;"><a href="/admin/app/scanners/{{ scanner.clientid }}/change/" class="btn btn-warning">Edit</a></tdstyle="vertical-align:middle;">
+        </tr>
+    {% endfor %}
+  </tbody>
+</table> 
+
+{% endblock %}

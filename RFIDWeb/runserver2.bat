@@ -1,0 +1,1 @@
+python manage.py runserver squeak.hopto.org:80 --noreload
